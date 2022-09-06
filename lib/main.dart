@@ -8,22 +8,13 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'QR Reader',
       initialRoute: 'home',
       routes: {
         'home': (_) => HomeScreen(),
         'map': (_) => MapScreen()
-      },
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text('Material App Bar'),
-        ),
-        body: Center(
-          child: Container(
-            child: Text('Hello World'),
-          ),
-        ),
-      ),
+      }
     );
   }
 }
