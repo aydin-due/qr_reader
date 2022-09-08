@@ -14,7 +14,11 @@ class MyApp extends StatelessWidget {
       routes: {
         'home': (_) => HomeScreen(),
         'map': (_) => MapScreen()
-      }
+      },
+      theme: ThemeData(
+        primarySwatch: Colors.deepOrange
+        // floatingActionButtonTheme: FloatingActionButtonThemeData(backgroundColor: Colors.red)
+      ),
     );
   }
 }
