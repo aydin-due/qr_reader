@@ -32,8 +32,8 @@ class _HomeScreenBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final uiProvider = Provider.of<UiProvider>(context);
-
     final currentIndex = uiProvider.selectedMenuOpt;
+    
     switch (currentIndex) {
       case 0:
         return const MapScreen();
