@@ -65,7 +65,7 @@ class DBProvider {
     : null;
   }
 
-   Future<List<ScanModel>?> getScans() async {
+  Future<List<ScanModel>?> getScans() async {
     final db = await database;
     final res = await db!.query('Scans');
     return res.isNotEmpty 
@@ -73,12 +73,30 @@ class DBProvider {
     : [];
   }
 
-   Future<List<ScanModel>?> getScanByTipo(String tipo) async {
+  Future<List<ScanModel>?> getScanByTipo(String tipo) async {
     final db = await database;
     final res = await db!.rawQuery('''SELECT * FROM Scans WHERE tipo = '$tipo' ''');
     return res.isNotEmpty 
     ? res.map((scan) => ScanModel.fromMap(scan)).toList()
     : [];
+  }
+
+  Future<int> updateScan(ScanModel newScan) async {
+    final db = await database;
+    final res = await db!.update('Scans', newScan.toMap(), where: 'id = ?', whereArgs: [newScan.id]);
+    return res;
+  }
+
+  Future<int> deleteScan(int id) async {
+    final db = await database;
+    final res = await db!.delete('Scans', where: 'id = ?', whereArgs: [id]);
+    return res;
+  }
+
+  Future<int> deleteScans() async {
+    final db = await database;
+    final res = await db!.delete('Scans');
+    return res;
   }
 
 }
