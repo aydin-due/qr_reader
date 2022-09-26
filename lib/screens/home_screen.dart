@@ -34,7 +34,11 @@ class _HomeScreenBody extends StatelessWidget {
   Widget build(BuildContext context) {
     final uiProvider = Provider.of<UiProvider>(context);
     final currentIndex = uiProvider.selectedMenuOpt;
-    DBProvider.db.database;
+    // DBProvider.db.database;
+
+    final tmpScan = ScanModel(valor: 'http://google.com');
+    DBProvider.db.newScan(tmpScan);
+
 
     switch (currentIndex) {
       case 0:
