@@ -46,12 +46,15 @@ class _HomeScreenBody extends StatelessWidget {
 
     // DBProvider.db.deleteScans().then(print);
 
-    final scanListProvider = Provider.of<ScanListProvider>(context, listen: false); //listen false para q no se redibuj
+    final scanListProvider = Provider.of<ScanListProvider>(context,
+        listen: false); //listen false para q no se redibuj
 
     switch (currentIndex) {
       case 0:
+        scanListProvider.loadScanByType('geo');
         return const MapHistoryScreen();
       case 1:
+        scanListProvider.loadScanByType('http');
         return const AddressesScreen();
       default:
         return const MapHistoryScreen();

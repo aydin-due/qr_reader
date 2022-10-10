@@ -1,12 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:qr_reader/providers/scan_list_provider.dart';
 
 class AddressesScreen extends StatelessWidget {
   const AddressesScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return const Center(
-      child: Text('Addresses Screen'),
+    final scanListProvider = Provider.of<ScanListProvider>(context); // dentro de build listen va en true xq se actualiza
+    final scans = scanListProvider.scans;
+
+    return ListView.builder(
+      itemCount: scans.length,
+      itemBuilder: (_, i) => ListTile(
+        leading: Icon(Icons.home, color: Theme.of(context).primaryColor),
+        title: Text(scans[i].valor),
+        subtitle: Text(scans[i].id.toString()),
+        trailing: const Icon(Icons.keyboard_arrow_right, color: Colors.grey),
+        onTap: () => print('si'),
+      ),
     );
   }
 }
