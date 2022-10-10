@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:qr_reader/providers/db_provider.dart';
+import 'package:qr_reader/providers/scan_list_provider.dart';
 import 'package:qr_reader/providers/ui_provider.dart';
 import 'package:qr_reader/screens/addresses_screen.dart';
+import 'package:qr_reader/screens/map_history_screen.dart';
 import 'package:qr_reader/screens/map_screen.dart';
 import 'package:qr_reader/widgets/custom_navbar.dart';
 import 'package:qr_reader/widgets/scan_button.dart';
@@ -42,15 +44,17 @@ class _HomeScreenBody extends StatelessWidget {
     // DBProvider.db.getScanById(0).then((scan) => print(scan!.valor));
     // DBProvider.db.getScans().then(print);
 
-    DBProvider.db.deleteScans().then(print);
+    // DBProvider.db.deleteScans().then(print);
+
+    final scanListProvider = Provider.of<ScanListProvider>(context, listen: false); //listen false para q no se redibuj
 
     switch (currentIndex) {
       case 0:
-        return const MapScreen();
+        return const MapHistoryScreen();
       case 1:
         return const AddressesScreen();
       default:
-        return const MapScreen();
+        return const MapHistoryScreen();
     }
   }
 }
