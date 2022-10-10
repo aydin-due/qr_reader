@@ -14,11 +14,12 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final scanListProvider = Provider.of<ScanListProvider>(context);
     return Scaffold(
       appBar: AppBar(
         title: const Text('Historial'),
         actions: [
-          IconButton(icon: const Icon(Icons.delete_forever), onPressed: () {})
+          IconButton(icon: const Icon(Icons.delete_forever), onPressed: () => scanListProvider.deleteScans()),
         ],
       ),
       body: _HomeScreenBody(),
