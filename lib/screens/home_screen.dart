@@ -22,7 +22,7 @@ class HomeScreen extends StatelessWidget {
           IconButton(icon: const Icon(Icons.delete_forever), onPressed: () => scanListProvider.deleteScans()),
         ],
       ),
-      body: _HomeScreenBody(),
+      body: const _HomeScreenBody(),
       bottomNavigationBar: const CustomNavBar(),
       floatingActionButton: ScanButton(),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
