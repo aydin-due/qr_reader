@@ -23,11 +23,19 @@ class _MapScreenState extends State<MapScreen> {
       tilt: 50
     );
 
+    // marcadores
+    Set<Marker> markers = <Marker>{};
+    markers.add(Marker(
+      markerId: const MarkerId('geo-location'),
+      position: scan.getLatLng()
+    ));
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Mapa'),
       ),
       body: GoogleMap(
+        markers: markers,
         myLocationButtonEnabled: false,
         mapType: MapType.normal,
         initialCameraPosition: puntoInicial,
