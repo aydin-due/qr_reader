@@ -3,6 +3,7 @@ import 'package:path_provider/path_provider.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:qr_reader/models/scan_model.dart';
 export 'package:qr_reader/models/scan_model.dart';
+import 'package:path/path.dart' as p;
 
 class DBProvider {
   static Database? _database;
@@ -19,7 +20,8 @@ class DBProvider {
   Future<Database> initDB() async {
     // path de donde almacenar la base de datos
     Directory documentsDirectory = await getApplicationDocumentsDirectory();
-    final path = '${documentsDirectory.path}ScansDB.db';
+    final path = p.join(documentsDirectory.path, 'ScansDB.db');
+    // final path = '${documentsDirectory.path}ScansDB.db';
     print(path);
 
     // crear base de datos
